@@ -134,6 +134,7 @@ h1 {
     color: #222;
     margin-bottom: 1em;
     padding: 0.5em 1em;
+    cursor: default;
 }
 
 /* MODALS FOR ENTERING NAME AND RESET USER */
@@ -392,7 +393,7 @@ form {
     -ms-transition: all 200ms ease-out;
     -o-transition: all 200ms ease-out;
     text-shadow: 0.5rem 0.5rem 0.5rem rgb(76 119 72 / 0.7);
-
+    cursor: pointer;
 }
 
 .todo-button:hover,
@@ -553,6 +554,7 @@ footer {
     text-align: right;
     padding-right: 1.5em;
     padding-bottom: 0.7em;
+    cursor: default;
 }
 
 footer p span {
