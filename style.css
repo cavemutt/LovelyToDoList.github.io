@@ -112,7 +112,7 @@ header i:active {
 /* MAIN TO DO LIST AREA */
 main {
     backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(5px);
     display: flex;
     flex-direction: column;
     justify-content: center;
