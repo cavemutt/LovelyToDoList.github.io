@@ -109,22 +109,22 @@ header i:active {
     border: 2px solid red;
 }
 
-/* MAIN TODO LIST AREA */
+/* MAIN TO DO LIST AREA */
 main {
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(3px);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 1em 0.8em 2em 0.8em;
-    border: 1px solid rgb(255 255 255 / 0.1);
+    border: 0.5px solid rgb(255 255 255 / 0.15);
     border-radius: 1.5em;
     -webkit-border-radius: 1.5em;
     -moz-border-radius: 1.5em;
     -ms-border-radius: 1.5em;
     -o-border-radius: 1.5em;
-    box-shadow: var(--card-shadow);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     margin-bottom: 3em;
 }
 
@@ -143,16 +143,20 @@ h1 {
 .reset-modal {
     display: flex;
     margin: auto;
-    background:rgba(255, 255, 255, 0.5) url(./leafbg.jpg) no-repeat bottom;
+    background:rgba(255, 255, 255, 0.5) url(./leaf-bg/bg-noleaf.jpg);
     border: none;
-    border-radius: 0.5em;
-    -webkit-border-radius: 0.5em;
-    -moz-border-radius: 0.5em;
-    -ms-border-radius: 0.5em;
-    -o-border-radius: 0.5em;
+    border-radius: 0.9em;
+    -webkit-border-radius: 0.9em;
+    -moz-border-radius: 0.9em;
+    -ms-border-radius: 0.9em;
+    -o-border-radius: 0.9em;
     padding: 3em;
     z-index: 500;
-    box-shadow: var(--card-shadow);
+    cursor: default;
+}
+
+.user-name-modal {
+    border: 10px ridge rgb(76, 119, 72)
 }
 
 .reset-modal {
@@ -164,12 +168,20 @@ h1 {
     font-weight: bold;
     font-size: 2rem;
     border: 2px solid rgb(164, 31, 31);
-    background: url(./leafbg.jpg) no-repeat bottom;
 }
 
 .warning {
     color: rgb(232, 17, 17, 0.8);
     font-size: 4rem;
+    aspect-ratio: 1;
+    padding: .5rem 1rem;
+    background: radial-gradient(rgb(199, 173, 173), rgba(191, 105, 105, 0.8), rgb(164 31 31 / 0.8));
+    border: 2px solid rgb(241, 5, 5);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
 }
 
 .reset-modal:not([open]) {
@@ -181,7 +193,7 @@ h1 {
 
 .reset-modal::backdrop,
 .user-name-modal::backdrop {
-    background: radial-gradient(rgb(255 255 255 / 0.5), rgb(255 255 255 / 0.8));    
+    background: radial-gradient(rgba(234, 238, 234, 0.8), rgb(255 255 255 / 0.8));    
 }
 
 .name-form {
@@ -222,6 +234,8 @@ h1 {
     -ms-transition: all 150ms ease-in;
     -o-transition: all 150ms ease-in;
     transform-origin: right;
+    cursor: pointer;
+    transform-origin: center;
 }
 
 .reset-no,
@@ -236,12 +250,6 @@ h1 {
     background: linear-gradient(315deg, rgb(164 31 31 / 0.8), rgb(164 31 31 / 0.3), rgb(164 31 31 / 0.8));
     color: rgb(192, 20, 20);
     border:2px solid rgb(192, 20, 20);
-    transition: all 150ms ease-out;
-    -webkit-transition: all 150ms ease-out;
-    -moz-transition: all 150ms ease-out;
-    -ms-transition: all 150ms ease-out;
-    -o-transition: all 150ms ease-out;
-    transform-origin: center;
 }
 
 .reset-yes,
@@ -251,8 +259,9 @@ h1 {
 
 .reset-yes:hover,
 .reset-yes:focus {
-    background: linear-gradient(315deg, rgba(232, 17, 17, 0.8), rgba(96, 9, 9, 0.3), rgb(232, 17, 17, 0.8));
-    color: rgb(23, 2, 2);
+    background: linear-gradient(315deg, rgba(232, 17, 17, 0.8), rgba(191, 15, 15, 0.8));
+    color: white;
+    /* color: rgb(23, 2, 2); */
     border:2px solid rgb(239, 21, 21);
     scale:1.1;
 }
@@ -261,7 +270,8 @@ h1 {
 .reset-no:focus,
 .name-button:hover,
 .name-button:focus {
-    background: rgba(164, 229, 157, 0.4);
+    background: linear-gradient(315deg, rgba(142, 219, 228, 0.7), rgba(107, 230, 96, 0.8), rgba(142, 219, 228, 0.7));
+    scale: 1.05;
 }
 
 .reset-no:active,
