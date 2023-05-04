@@ -4,7 +4,7 @@ While increasing my understanding of Javascript, I followed a nice to-do list ap
 The tutorial showed taking input, creating a list, added buttons for delete and complete, local storage for the list, 
 filtering the list, and a basic styling.
 
-Testing my apparent enjoyment of staring intensely at a computer screen while my overheating brain cells and google fingers find ways to make things work),
+Testing my apparent enjoyment of staring intensely at a computer screen while prodding the brain cells and google fingers to find ways to make things work),
 I added many features on my own.
 
 My additions include :
