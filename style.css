@@ -458,7 +458,7 @@ form {
         -ms-transform: translateY(0vh);
         -o-transform: translateY(0vh);
 }
-    5% {
+    3% {
         opacity: 1;
         transform: translateY(0.5vh) rotate(-8deg);
         -webkit-transform: translateY(0.5vh) rotate(-8deg);
@@ -466,7 +466,7 @@ form {
         -ms-transform: translateY(0.5vh) rotate(-8deg);
         -o-transform: translateY(0.5vh) rotate(-8deg);
 }
-    10% {
+    7% {
         opacity: 1;
         transform: translateY(-3vh) rotate(-5deg);
         -webkit-transform: translateY(-3vh) rotate(-5deg);
