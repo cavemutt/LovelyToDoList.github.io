@@ -48,8 +48,6 @@ function firstName() {
         userName.value = ''
         nameSubmitBtn.addEventListener('click', (e) => {
             e.preventDefault()
-            // alert(userName.value)
-            console.log(userName.value)
             let user = userName.value || 'Anonymous'
             userNameModal.close()
             title.innerText = `${user}'s To Do List`
@@ -80,8 +78,7 @@ function addTodo(e) {
     // check for duplicates
     let noDupes = Array.from(lines)
     noDupes.forEach(noDupe => {
-        if(noDupe.innerText === newTodo.innerText) {
-            console.log('duplicate')
+        if(noDupe.innerText === newTodo.innerText) {         
             newTodo.innerText = `${newTodo.innerText} again`
         }
     })
@@ -92,7 +89,6 @@ function addTodo(e) {
 
     // local storage when new todo added
     saveLocalTodos(newTodo.innerText)
-    // saveLocalTodos(todoInput.value)
     
     const completeBtn = document.createElement('button')
     completeBtn.classList.add("complete-btn")
@@ -115,7 +111,7 @@ function updateNum() {
     // console.log(lines.length)
     let todoNum = lines.length 
     if(todoNum < 1) {
-        listLength.innerText = `You've done it all, amazing!`
+        listLength.innerText = `You've done it all, you are amazing!`
         listLength.style.background = 'radial-gradient(rgb(255 255 255 / 0.5), transparent, transparent)'
     } else if(todoNum === 1) {
         listLength.innerHTML = `You have <span>${todoNum}</span> thing on your list.`
