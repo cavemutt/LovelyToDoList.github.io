@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="light dark">
-    <link rel="icon" type="image/png" href="./logos/jcacmLogo400.png">
+    <!-- <meta name="color-scheme" content="light dark"> -->
+    <link rel="icon" type="image/png" href="./logos/jldev-final2-dkblue.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="stylebg.css">
-    <script src="script.js" defer></script>
-    <title>Lovely To Do List</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./stylebg.css">
+    <link rel="stylesheet" href="./bubbleStyle.css">
+    <title>Lovely To Doo List</title>
 </head>
 <body>
+
+    <!-- ~~~~~~~~~~~ Animated Lovely Leaves Background ~~~~~~~~~~~~~~~ -->
     <div class="background">
         <div class="top-branch-leaves">
             <img src="./leaf-bg/top twig.png" alt="twig" class="leaf" id="top-twig">
@@ -82,56 +84,135 @@
     
         </div>
     </div>
-    <header>
-        <div class="logo">
-            <img src="./logos/jcacmLogo400.png" alt="logo">
-            <p>Jencat&Cavemutt</p>
+    <!-- ~~~~~~~~~~~ end of background ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <!-- ~~~~~~~ Silly Billy Bubbles Tour ~~~~~~~~~~~~~ -->
+    <div class="bubble-wrapper">
+
+        <!-- ** Billy Button moved into Header for this project ** -->
+        <!-- This button will start and end the tour, currently position: absolute in top right corner, but you can put it where you want to -->
+            <!-- <button class="open-billy-bubbles-btn start" id="billy-btn" title="open/close the Tour">
+                <img src="./assets/Billy-paw-400.png" alt="Silly Billy's paw to open tour">
+                <p id="billy-btn-tooltip">open/close Bubble Tour</p>
+            </button> -->
+            
+        <!-- This is the first stop on the tour where Billy introduces himself and explains the tour, it is currently positioned a little bit down from the top of the page -->
+            <div id="bubble-intro" data-bubble="Hi! I'm Silly Billy! Let me take you on a little Bubble Tour of the Lovely To-Do List! (hit the >> button for the next tour stop!)"></div>
+        
+        <!-- This is the last stop on the tour where Billy gives a little outro : currently position it behind the above open-billy-bubble-tour so Billy can show people where they can open the tour again -->
+            <div id="bubble-outro" data-bubble="Ok! Feel free to hit the Billy-paw button anytime to start the tour again. Bye!"></div>
+        
+        <!-- This indicates which element Billy is currently talking about, it will appear at the top left of each element on the tour, except the last stop, it hides to not be confused with the open-tour button -->
+            <img id="bubble-indicator" src="./assets/Billy-paw-400.png" alt="Silly Billy's paw"></img>
+        
+        <!-- These are the elements for the Silly Billy Bubble Tour! -->
+            <div class="silly-billy-bubbles" id="silly-billy-bubbles">
+                <div class="billy-bubble" id="billy-bubble">
+                    <img src="./assets/Billy-whiskers-700.png" alt="Silly Billy's head">
+                </div>
+                <div class="bubble-shaper"></div>
+                <p class="bubble-content" id="bubble-content"></p>
+                <button class="close-bubble bubble-btn" id="close-bubble" title="close Billy Bubbles">X</button>
+                <button class="continue-bubble bubble-btn" id="continue-bubble" title="next Billy Bubble">>></button>
+            </div>
+    </div>
+<!-- ~~~~~~~~ end of Silly Billy Bubbles tour ~~~~~~~~~~ -->
+
+<!-- header with logo/link and user reset button to trigger modal dialog -->
+    <header  id="background-tour-stop" data-bubble="The background is a CSS animation! The leaves and branches were extracted from the photo and animated, with lowered opacity and some custom variables to give them a natural feeling. The bokeh lights are using custom variables to style each polygon.">
+        <a class="logo" href="https://github.com/cavemutt" target="_blank">
+            <img src="./logos/jldev-final2-dkblue.png" alt="logo">
+            <p>visit my repos!</p>
+        </a>
+        <h2 id="app-title" data-bubble="The Lovely To-Do List app takes a classic coding assignment and turns listing out your to-dos into a nice experience."><i class="fa-solid fa-leaf"></i> Lovely To-Do List <i class="fa-solid fa-leaf"></i></h2>
+        <!-- fa-solid fa-volume-xmark, fa-solid fa-volume-low, fa-solid fa-volume-high -->
+        <div class="volume-container" id="volume-container" data-bubble="When you discard a task from your list using the trash icon, a sound is randomly picked from 3 possibilities. Please adjust the volume to your liking!">
+            <div class="volume-info">
+                <label for="volume-input">Volume <span><i class="fa-solid fa-volume-low"></i></span></label>
+                <div class="value-display" id="value-display">1</div>
+            </div>
+            <div class="volume-slider">
+                <input type="range" min="0" max="10" value="1" step="0.5" class="volume-input" id="volume-input">
+                <div class="volume-thumb" id="volume-thumb"><i class="fa-solid fa-leaf"></i></div>
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>            
         </div>
-        <i class="fa-sharp fa-solid fa-user" role="button" id="reset-button" title="Reset User & List Data"></i>
+        <button id="reset-button" class="reset-button" title="Reset User & List Data" data-bubble="This app uses local storage so it recognizes you and your list items, including what is completed and in what order they belong. You can reset and clear user and local storage data with this button.">
+            <p>user reset</p>
+            <i class="fa-sharp fa-solid fa-user"></i>
+        </button>
+
+        <!-- This button will start and end the tour, currently position: absolute in top right corner, but you can put it where you want to -->
+        <button class="open-billy-bubbles-btn start" id="billy-btn" title="open/close the Tour">
+            <img src="./assets/Billy-paw-400.png" alt="Silly Billy's paw to open tour">
+            <p id="billy-btn-tooltip">open/close Bubble Tour</p>
+        </button>
+
     </header>
+<!-- modal dialog for reset user info and local storage -->
     <dialog class="reset-modal" id="reset-modal">
         <p class="warning">!</p>
         <p>Would you like to clear all<br> of the current user's data?</p>
-        <button class="btn reset-yes" id="reset-yes">Yes, please</button>
-        <button class="btn reset-no" id="reset-no" type="submit">No, thank you</button>
-    </dialog>         
+        <button class="btn reset-yes" id="reset-yes">Yes, reset please</button>
+        <button class="btn reset-no" id="reset-no" type="submit">No, thank you<br><span>back to my list</span></button>
+    </dialog> 
+    
+<!-- Main content -->
     <main>
-        <h1>To Do List</h1>
+        <h1 id="to-do-list-title" data-bubble="Here will be the name you enter at the beginning of the app, or 'Anonymous' if you do not enter a name.(But I'll still know it's you: cats know these things...)">To-Do List</h1>
+        <!-- opening modal dialog to ask for user name -->
         <dialog class="user-name-modal" id="user-name-modal">
             <form id="name-form" class="name-form">
                 <h2>Welcome! Try out this lovely To Do List app!</h2>
                 <p>Please enter your first name :</p>
-                <input type="text" class="name-input" id="name-input" required>
+                <input type="text" class="name-input input" id="name-input" required>
                 <button class="btn name-button" type="submit">That's my name!</button>
             </form>
         </dialog>
 
-        <ul class="todo-list">
-            <!-- <li class="item">hello</li> -->
+        <!-- place ready for your to-doos -->
+        <ul class="todo-list" id="to-do-list-ul" data-bubble="This is where your to-dos will be listed. Each item will have a button to mark the item as completed, and a trash button to delete the item from your list. Give that Delete button a try now!">
         </ul>
-        <form id="input-form">
-            <input type="text" class="todo-input" placeholder="enter new to do" required>
+
+        <!-- form to enter your to-doos -->
+        <form id="input-form" data-bubble="This is where you input your to-dos. If you hit the + button without entering anything, I will choose what your to-dos will be. If the same thing is entered more than once, I will add 'again' to the end of it.">
+            <input type="text" class="todo-input input" placeholder="enter your new to-do" required>
             <button class="todo-button" type="submit">
                 <i class="fas fa-plus-square"></i>
             </button>
         </form>
-        <div class="filters">
-            <p class="length-p"></p>
+
+        <!-- drop-down control for which to-doos to see -->
+        <div class="select-container" id="select-container" data-bubble="You can filter your list to show only the items completed or not yet completed, in addition to showing them all.">
+            <p class="list-length-p" id="list-length-p" data-bubble="How many items remain on your list(completed or not) will be show here. If you finish and remove all of your tasks, you will be congratulated!"></p>
             <div class="select-detail">
-                <select name="todos" class="filter-todos">
-                    <option value="all">Show All</option>
-                    <option value="completed">Completed</option>
-                    <option value="uncompleted">Not Completed</option>
+                <label for="filter-todos">Filter your to-do list : </label>
+                <select name="todos" id="filter-todos" class="filter-todos">
+                    <option class="filter-option" value="all">Show All</option>
+                    <option class="filter-option" value="completed">Completed</option>
+                    <option class="filter-option" value="uncompleted">Not Completed</option>
                 </select>
 
             </div>
         </div>
     </main>
     <footer>
-        <p>Hand Coded with love by <span>Jennifer Lee Dev</span> &copy;2022; Background Photo by Dmytro Tolokonov on Unsplash</p>
+        <p>Hand Coded with love by <span>Jennifer Lee Dev</span> &copy;2023; Background Photo by Dmytro Tolokonov on Unsplash; Sounds from Pixabay</p>
     </footer>
     
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"></script>
+    <script src="./bubbleScript.js"></script>
+    <script src="./script.js"></script>
+
 
 </body>
 </html>
+
+<!-- to doos for this app -->
+<!-- 
+    preloader 
+    check cursors, add custom cursor? leaf?
+    move reset button and add text to it
+    add SBBT - add text to paw btn?
+    notify uses sounds and local storage
+ -->

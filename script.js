@@ -1,7 +1,7 @@
 const todoInput = document.querySelector('.todo-input')
 const todoBtn = document.querySelector('.todo-button')
 const todoList = document.querySelector('.todo-list')
-const listLength = document.querySelector('.length-p')
+const listLength = document.querySelector('.list-length-p')
 const filterOption = document.querySelector('.filter-todos')
 const title = document.querySelector('h1')
 const userNameModal = document.querySelector('#user-name-modal')
@@ -11,8 +11,15 @@ const resetStorage = document.querySelector('#reset-button')
 const resetModal = document.querySelector('#reset-modal')
 const resetYes = document.querySelector('#reset-yes')
 const resetNo = document.querySelector('#reset-no')
+const volumeSlider = document.querySelector('.volume-slider')
+const volumeIcon = document.querySelector('.volume-slider label span i')
+const volumeThumb = document.querySelector('#volume-thumb')
+const volumeDisplay = document.querySelector('#value-display')
+const progressBar = document.querySelector('#progress-bar')
+let lines = todoList.children 
+let volume = 0.1
 
-// const logo = document.querySelector('.logo')
+// Event Listeners
 
 window.addEventListener('load', () => {
     filterOption.value = 'all'
@@ -21,10 +28,31 @@ window.addEventListener('load', () => {
 })
 
 resetStorage.addEventListener('click', resetUser);
+
 todoBtn.addEventListener('click', addTodo);
+
 todoList.addEventListener('click', deleteCheck);
+
 filterOption.addEventListener('click', filterTodo);
 
+volumeSlider.addEventListener('input', e => {
+    volumeThumb.style.left = e.target.value * 10 + "%"
+    progressBar.style.width = e.target.value * 10 + "%"     
+    volumeDisplay.innerText = e.target.value
+
+    if (e.target.value == 0) {
+        volumeIcon.classList = "fa-solid fa-volume-xmark"
+    } else if (e.target.value >= 5.5) {
+        volumeIcon.classList = "fa-solid fa-volume-high"
+    } else {
+        volumeIcon.classList = "fa-solid fa-volume-low"
+    }
+
+    volume = e.target.value * 0.1
+})
+
+
+// clear user and local storage data
 function resetUser() {
     console.log('reset')
     resetModal.showModal()
@@ -39,6 +67,7 @@ function resetUser() {
     })
 }
 
+// collect user's name in the Welcome modal
 function firstName() {
     // check if name in storage already
     let name
@@ -50,32 +79,33 @@ function firstName() {
             e.preventDefault()
             let user = userName.value || 'Anonymous'
             userNameModal.close()
-            title.innerText = `${user}'s To Do List`
+            title.innerText = `${user}'s To-Do List`
             name.push(user)
             localStorage.setItem('name', JSON.stringify(name))
         })
     } else {
         name = JSON.parse(localStorage.getItem('name'))
         title.innerText = `${name}'s To Do List`
-
     }
-
 }
 
-
+// create the To-Do list and it's buttons
 function addTodo(e) {
     e.preventDefault()
-
-    const todoDiv = document.createElement("div")
-    todoDiv.classList.add("todo-div")
 
     const defaultInputs = ["Pet the Cat", "Feed the Cat", "Play with Cat", "Cuddle with Cat", "Clean Litterbox", "Give Treats to Cat"]
     let defaultInput = defaultInputs[Math.floor(Math.random()*(defaultInputs.length))]
     
+    // create list elements
+    const todoDiv = document.createElement("div")
+    todoDiv.classList.add("todo-div")
+
     const newTodo = document.createElement("li")
     newTodo.innerText = todoInput.value || defaultInput
-    
-    // check for duplicates
+    newTodo.classList.add('todo-item')
+    todoDiv.appendChild(newTodo)
+
+    // check for duplicate entries (including defaults)
     let noDupes = Array.from(lines)
     noDupes.forEach(noDupe => {
         if(noDupe.innerText === newTodo.innerText) {         
@@ -83,13 +113,10 @@ function addTodo(e) {
         }
     })
 
-    newTodo.classList.add('todo-item')
-
-    todoDiv.appendChild(newTodo)
-
-    // local storage when new todo added
+    // save to local storage when new todo added
     saveLocalTodos(newTodo.innerText)
     
+    // create the button elements for each list item
     const completeBtn = document.createElement('button')
     completeBtn.classList.add("complete-btn")
     completeBtn.innerHTML = '<i class="fas fa-check"></i>'
@@ -100,15 +127,15 @@ function addTodo(e) {
     deleteBtn.innerHTML = '<i class="fas fa-trash"></i>'
     todoDiv.appendChild(deleteBtn)
 
+    // put it all together
     todoList.appendChild(todoDiv)
-
     todoInput.value = ''
+
     updateNum()
 }
 
-let lines = todoList.children 
+// update number of items on To-Do list
 function updateNum() {
-    // console.log(lines.length)
     let todoNum = lines.length 
     if(todoNum < 1) {
         listLength.innerText = `You've done it all, you are amazing!`
@@ -120,9 +147,11 @@ function updateNum() {
     }
 }
 
+// perform complete or delete functions for particular list item and update local storage
 function deleteCheck(e) {
     const thing = e.target
-
+    
+    // delete list item, initiate audio
     if(thing.classList[0] === 'delete-btn') {
         const todo = thing.parentElement
         todo.classList.add("fall")
@@ -138,7 +167,7 @@ function deleteCheck(e) {
         ]
         let effect = effects[Math.floor(Math.random()*(effects.length))]
         const sound = new Audio(effect);
-        sound.volume = 0.3;
+        sound.volume = volume;
         setTimeout(function() {
             sound.play()
         }, 2100)
@@ -150,6 +179,7 @@ function deleteCheck(e) {
         }, 3001)
     }
     
+// mark list item as completed
     if(thing.classList[0] === 'complete-btn') {
         const todo = thing.parentElement
         
@@ -167,6 +197,7 @@ function deleteCheck(e) {
     }
 }
 
+// filter the To-Do list shown 
 function filterTodo(e) {
     let todos = Array.from(lines)
     todos.forEach(todo => {
@@ -192,7 +223,7 @@ function filterTodo(e) {
     })
 }
 
-
+// save list items to local storage
 function saveLocalTodos(todo) {
     // check if there are any todos in storage already
     let todos;
@@ -206,6 +237,7 @@ function saveLocalTodos(todo) {
     localStorage.setItem('todos', JSON.stringify(todos))
 }
 
+// save completed items to local storage
 function saveCompTodos(comp) {
     // check if there are any comps in storage already
     let comps;
@@ -219,6 +251,7 @@ function saveCompTodos(comp) {
     localStorage.setItem('comps', JSON.stringify(comps))
 }
 
+// get items from local storage
 function getTodos() {
     let todos;
     if(localStorage.getItem('todos') === null) {
@@ -234,7 +267,6 @@ function getTodos() {
         const newTodo = document.createElement("li")
         newTodo.innerText = todo
         newTodo.classList.add('todo-item')
-    
         todoDiv.appendChild(newTodo)
     
         const completeBtn = document.createElement('button')
@@ -249,12 +281,15 @@ function getTodos() {
     
         todoList.appendChild(todoDiv)
         todoInput.value = ''
+
         updateNum()
+        
         const text = todoDiv.innerText
         getComps(text, todoDiv)
     })
 }
 
+// get completed items from local storage
 function getComps(text, tdiv) {
     let comps;
     if(localStorage.getItem('comps') === null) {
@@ -270,6 +305,7 @@ function getComps(text, tdiv) {
     })
 }
 
+// remove items from local storage
 function removeLocalTodos(todo) {
     let todos;
     if(localStorage.getItem('todos') === null) {
@@ -283,6 +319,7 @@ function removeLocalTodos(todo) {
     localStorage.setItem("todos", JSON.stringify(todos))
 }
 
+// remove completed items from local storage
 function removeCompTodos(remComp) {
     let comps;
     if(localStorage.getItem('comps') === null) {
