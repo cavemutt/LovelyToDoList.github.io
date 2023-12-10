@@ -3,7 +3,7 @@
 A calming breeze helps you keep track of your to-do list and makes getting items off your list fun!
 Hand-coded with love by Jennifer Lee Dev
 
-![The Lovely To-Do List in action](/assets/LTDL-full1.jpg)
+![The Lovely To-Do List in action](/assets/LTDL-full.jpg)
 
 ## This project uses : 
 HTML5, CSS3, JavaScript, Local Storage, and GSAP (for the Silly Billy Bubbles Tour)
@@ -71,4 +71,4 @@ Promineo Tech (school, https://promineotech.com/)
 
 _Please enjoy and thanks for checking it out!_
 
-![A list item being removed.](/assets/LTDL-full.jpg)
+![A list item being removed.](/assets/LTDL-full2.jpg)
