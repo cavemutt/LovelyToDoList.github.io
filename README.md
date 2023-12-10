@@ -1,6 +1,6 @@
 # The Lovely To-Do List
 
-A calming breeze helps you keep track of your to-do list and makes getting items off your list fun!
+A calming breeze helps you keep track of your to-do list and makes getting items off your list fun! Hand-coded with love by Jennifer Lee Dev
 
 ![The Lovely To-Do List in action](/assets/LTDL-full1.jpg)
 
@@ -21,12 +21,13 @@ HTML5, CSS3, JavaScript, Local Storage, and GSAP (for the Silly Billy Bubbles To
 
 
 ## Why I Built This :
-The To-Do List is a classic coding assignment that I had previously done along with different tutorials, as it helps me to learn how different people code similar things. As I was doing the assignment along with a tutorial in the the Creative Javascript course by DevelopedByEd, I couldn't help but greatly expand upon the basic input and list creation, local storage and filtering ideas that were presented in the course. 
+The To-Do List is a classic coding assignment that I had previously done along with different tutorials, as it helps me to learn how different people code similar things. In doing this assignment with the Creative Javascript course by DevelopedByEd, I couldn't help but greatly expand upon the basic input and list creation, local storage and filtering ideas that were presented in the course. 
 
+## Why a "Lovely" to-do list?
 Making a list of To-Dos can contribute to a little stress for some people, so I figured a Lovely To-Do List would make the task a little more calming.
 
 ## What I've added to the basics :
-The styling choices are my own, beyond the basics of input, icons, a static name at the top, a completed and deleted button on each list item, and the idea of an item kind of falling off the list upon delete. 
+The styling choices are my own, beyond the basics of input, icons, a static name at the top, a completed and deleted button on each list item, and Ed's idea of an item kind of falling off the list upon delete. 
 
 The CSS animated background is made from a still photo, from which I've extracted the branches and leaves and added polygons to animate the moving bokeh light effects. I used custom CSS variables and different animations to make it more natural looking. The list itself has a blurry backdrop to allow the user to see the background even when the list grows in size.  
 
@@ -51,7 +52,7 @@ I've also installed my very own **Silly Billy Bubbles Tour guide** to give some 
 ### What I've learned and future development : 
 This was great practice with functional JavaScript and CSS animation. I really enjoyed being able to bring my ideas to life in this app. This project helped solidify some skills, such as creating elements, controlling modals and using audio. I also was able to learn much about how local storage works and how to store, change and retrieve items with differences.
 
-This app is ok on smaller screen sizes, but just 'ok', it could be improved. It also needs improvement as far as accessibility. I am very sure some ARIA properties would benefit the accessibility of this app, as well as the Silly Billy Bubbles Tour. I will come back to my projects to upgrade their accessibility. The time/date of when an item is added would also be useful.  
+This app is ok on smaller screen sizes, but just 'ok', it could be improved. It also needs improvement as far as accessibility. I am very sure some ARIA properties would benefit the screen-reading of this app, as well as the Silly Billy Bubbles Tour. I will come back to my projects to upgrade their accessibility. The time/date of when a list item is added would also be useful.  
 
 If you see any errors or have any comments or suggestions, please let me know! Feel free to email me at jennifer_lee_dev@protonmail.com
 
