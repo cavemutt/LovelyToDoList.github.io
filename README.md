@@ -1,6 +1,7 @@
 # The Lovely To-Do List
 
-A calming breeze helps you keep track of your to-do list and makes getting items off your list fun! Hand-coded with love by Jennifer Lee Dev
+A calming breeze helps you keep track of your to-do list and makes getting items off your list fun!
+Hand-coded with love by Jennifer Lee Dev
 
 ![The Lovely To-Do List in action](/assets/LTDL-full1.jpg)
 
