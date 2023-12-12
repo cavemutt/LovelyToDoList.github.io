@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Domine:wght@400;500;600;700&family=Josefin+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Indie+Flower&family=Oswald:wght@200;300;400;500;600;700&family=Permanent+Marker&family=Press+Start+2P&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Permanent+Marker&display=swap');
+/* 'Oswald' and 'Permanent Marker' */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 /* font-family: 'Roboto', sans-serif; */
 
@@ -55,8 +55,7 @@ html {
 body {
     width: 100vw;
     min-height: 100vh;
-    /* font-family: 'Indie Flower', cursive; */
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', system-ui, sans-serif;
     display: grid;
     place-items: center;
     overflow-x: hidden;
@@ -115,7 +114,7 @@ header h2 {
 }
 
 .logo p {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Oswald', system-ui, sans-serif;
     color:var(--logo-peach);
     font-weight: 400;
     font-size: 1rem;
@@ -139,7 +138,7 @@ header h2 {
 }
 
 .volume-container label {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Oswald', system-ui, sans-serif;
     text-shadow: 0.1rem 0.1rem 0.15rem rgb(255 255 255 / 0.5);
 }
 
@@ -361,8 +360,8 @@ h1 {
     align-items: center;
     padding: 1vw 2vw 2vw 2vw;
     gap: 1em;
-    font-family: 'Poppins';
-    font-weight: bold;
+    font-family: 'Poppins', system-ui, sans-serif;
+    font-weight: 600;
     font-size: clamp(1rem, 0.5rem + 2vw, 2rem);
     border: 2px solid rgb(164, 31, 31);
 }
@@ -699,7 +698,7 @@ form {
     gap: 0.2rem;
     align-items: center;
     justify-content: center;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Oswald', system-ui, sans-serif;
     text-shadow: 0.1rem 0.1rem 0.15rem rgb(255 255 255 / 0.5);
     /* color: #333; */
 }
@@ -776,7 +775,7 @@ form {
 /* FOOTER */
 footer {
     line-height: 120%;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Oswald', system-ui, sans-serif;
     width: 100%;
     position: absolute;
     align-self: flex-end;
